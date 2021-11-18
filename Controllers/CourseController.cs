@@ -31,16 +31,31 @@ namespace InstituteOfTechnology.Controllers
         
         public ActionResult SaveCourse(Courses course)      // To save the course record:
         {
-            
-            if (course.Id == 0)
+            if (course.CourseName == null || course.CourseDescription == null
+                || course.CourseRating <0 || course.TutorName == null)
             {
-                    //When user try to add new records from UI and clicks the submit Button
+                return RedirectToAction("Create", "Course");
 
-                    _context.Course.Add(course);
             }
 
 
-            _context.SaveChanges();
+            if (course.Id == 0)
+            {
+                //When user try to add new records from UI and clicks the submit Button
+
+                _context.Course.Add(course);
+            }
+            else
+            {
+                //This is else condition for users edited the records and save
+                var courseindb = _context.Course.Single(c => c.Id == course.Id);
+                //studentindb.Id = stud.Id;
+                courseindb.CourseName = course.CourseName;
+                courseindb.CourseDescription = course.CourseDescription;
+                courseindb.CourseRating = course.CourseRating;
+                courseindb.TutorName = course.TutorName;
+            }
+                _context.SaveChanges();
             return RedirectToAction("List", "Course");
 
         }
