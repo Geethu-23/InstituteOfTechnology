@@ -1,0 +1,69 @@
+﻿@model InstituteOfTechnology.Models.Students
+
+
+@{
+    ViewBag.Title = "CreateStudent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create New Student</h2>
+
+
+
+
+@using (Html.BeginForm("Save", "Student"))
+
+{
+<div class="form-group">
+    @*@Html.LabelFor(m => m.Id)
+        @Html.TextBoxFor(m => m.Id, new { @class = "form-control" })*@
+
+    @Html.LabelFor(m => m.FirstName)
+    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.FirstName)
+    <br />
+    <br />
+
+    @Html.LabelFor(m => m.LastName)
+    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.LastName)
+    <br />
+    @Html.LabelFor(m => m.DateOfBirth)
+    @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.DateOfBirth)
+    <br />
+
+    @Html.LabelFor(m => m.CourseEnrolledDate)
+    @Html.TextBoxFor(m => m.CourseEnrolledDate, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.CourseEnrolledDate)
+    <br />
+
+    @Html.LabelFor(m => m.CourseId)
+
+    @Html.DropDownListFor(m => m.CourseId, new SelectList(Model.studentcourse, "Id", "Name", "Select"))
+    @Html.ValidationMessageFor(m => m.CourseId)
+    <br />
+    <br />
+    @Html.LabelFor(m => m.Grade)
+    @Html.TextBoxFor(m => m.Grade, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Grade)
+    <br />
+    <br />
+    @Html.LabelFor(m => m.CourseStatus)
+    @Html.DropDownListFor(m => m.CourseStatus, new List<SelectListItem>
+    {
+    new SelectListItem{Text="In-Progress", Value="1"},
+    new SelectListItem{Text="Completed", Value="2"}
+    }, "-Select")
+    @Html.ValidationMessageFor(m => m.CourseStatus)
+
+</div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+    <br />
+    <br />
+    <h3>@Html.ActionLink("Back To List", "List")</h3>
+}
+
+
+

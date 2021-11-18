@@ -1,0 +1,63 @@
+﻿@model IEnumerable<InstituteOfTechnology.Models.Courses>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List Of Courses</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            
+            <th>CourseName</th>
+            <th>TutorName</th>
+            <th>CourseDescription</th>
+            <th>CourseRating</th>            
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        @foreach (var courses in Model)
+        {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => courses.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => courses.TutorName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => courses.CourseDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => courses.CourseRating)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = courses.Id })
+
+            </td>
+
+            <td>
+                @Html.ActionLink("Delete", "DeleteCourse", new { id = courses.Id })
+            </td>
+
+
+        </tr>
+        }
+    </tbody>
+</table>
+
+<h4>@Html.ActionLink("Add New Course", "Create", "Course")</h4>
+
+
+
+
+
+

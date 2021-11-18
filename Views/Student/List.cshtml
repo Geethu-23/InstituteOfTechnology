@@ -1,0 +1,78 @@
+﻿@model IEnumerable<InstituteOfTechnology.Models.Students>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List Of Students</h2>
+
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Date Of Birth</th>
+            <th>Course Enrolled Date </th>
+            <th>Course Id </th>
+            <th>Grade </th>
+            <th>Course Status </th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        @foreach (var student in Model)
+        {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => student.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => student.LastName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => student.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => student.CourseEnrolledDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => student.CourseId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => student.Grade)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => student.CourseStatus)
+            </td>
+
+
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = student.Id })
+
+            </td>
+
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = student.Id })
+            </td>
+
+
+        </tr>
+        }
+    </tbody>
+</table>
+
+<h4>@Html.ActionLink("Create New Student", "CreateStudent", "Student")</h4>
+
+
+
+

@@ -1,0 +1,60 @@
+﻿@model InstituteOfTechnology.Models.Students
+@{
+    ViewBag.Title = "DeleteStudent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>The below student record successfully deleted</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Date Of Birth</th>
+            <th>Course Enrolled Date </th>
+            <th>Course Id </th>
+            <th>Grade </th>
+            <th>Course Status </th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => Model.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.LastName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => Model.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.CourseEnrolledDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.CourseId)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => Model.Grade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.CourseStatus)
+            </td>
+
+
+        </tr>
+        
+    </tbody>
+</table>
+
+@Html.ActionLink("Back To List", "List", "Student")
+
