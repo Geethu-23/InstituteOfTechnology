@@ -36,14 +36,16 @@ namespace InstituteOfTechnology.Controllers
 
         public ActionResult Save(Students stud)
         {
-            if (stud.FirstName == null || stud.LastName == null
+            if (stud.FirstName == null 
                  || stud.Grade == null || stud.CourseEnrolledDate == null
                  || stud.CourseId < 0 || stud.CourseStatus == null
-                 || stud.DateOfBirth == null)
-            {
-                return RedirectToAction("CreateStudent", "Student");
+                || stud.CourseId==0
+                 || stud.DateOfBirth == null || stud.DateOfBirth.Equals("1/1/0001 12:00:00 AM")
+                 || stud.CourseEnrolledDate.Equals("1/1/0001 12:00:00 AM"))
+                {
+                return RedirectToAction("CreateStudent", "Student",stud);
 
-            }
+                }
             if (stud.Id == 0)
             {
                 //When user try to add new records ords from UI and clicks the submit Button
@@ -52,7 +54,7 @@ namespace InstituteOfTechnology.Controllers
             }
             else
             {
-                //This is else condition for users edited the records and save
+                //This  else condition for users edit the records and save
                 var studentindb = _context.Student.Single(c => c.Id == stud.Id);
                 //studentindb.Id = stud.Id;
                 studentindb.LastName = stud.LastName;
@@ -64,21 +66,8 @@ namespace InstituteOfTechnology.Controllers
                 studentindb.DateOfBirth = stud.DateOfBirth;
             }
 
-            // commiting the records in database
-            /* if (stud.FirstName == null || stud.LastName == null
-                 || stud.Grade == null || stud.CourseEnrolledDate == null
-                 || stud.CourseId > 0 || stud.CourseStatus == null
-                 || stud.DateOfBirth == null) {
-                 return RedirectToAction("CreateStudent", "Student");
-
-             }
-             else
-             {
-                 _context.SaveChanges();
-
-             }*/
             _context.SaveChanges();
-            return RedirectToAction("List", "Student","");
+            return RedirectToAction("List", "Student",stud);
         }
         public ActionResult Edit(int id)
         {

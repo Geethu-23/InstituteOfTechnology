@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
+
 namespace InstituteOfTechnology.Models
 {
     public class Students
@@ -15,11 +16,21 @@ namespace InstituteOfTechnology.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
+        //[Required]
+        //[Display(Name = "Date of Birth")]
+        //// [AgeValidation]
+        //public DateTime? DateOfBirth
+        //{
+        //    get; set;
+        //}
         [Required]
+        [Display(Name = "Date of Birth")]
+        [AgeValidation]
         public DateTime DateOfBirth { get; set; }
-        public Courses Courses { get; set; }
+        //[Required]
+       // public Courses Courses { get; set; }
 
-        [Required]
+        [Required]  
         public int CourseId { get; set; }
 
         [Required]

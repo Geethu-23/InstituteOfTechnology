@@ -20,7 +20,8 @@ namespace InstituteOfTechnology.Models
         [Required]
         public string TutorName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter the field number")]
+        [Range(1, 10, ErrorMessage = "The field number should between 1 to 10")]
         public int CourseRating { get; set; }
 
     }

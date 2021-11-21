@@ -22,19 +22,20 @@ namespace InstituteOfTechnology.Controllers
 
 
 
-        public ActionResult Create(Courses courses)            //Creating the course record:
+        public ActionResult Create(Courses course)            //Creating the course record:
 
         {
-            return View(courses);
+            return View(course);
         }
 
         
         public ActionResult SaveCourse(Courses course)      // To save the course record:
         {
             if (course.CourseName == null || course.CourseDescription == null
-                || course.CourseRating <0 || course.TutorName == null)
+                || course.CourseRating==0 || course.TutorName == null
+                || course.CourseRating >10)
             {
-                return RedirectToAction("Create", "Course");
+                return RedirectToAction("Create", "Course", course);
 
             }
 

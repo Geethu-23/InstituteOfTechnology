@@ -11,24 +11,32 @@
 @using (Html.BeginForm("SaveCourse", "Course"))
 
 {
-
+    @Html.HiddenFor(m => m.Id)
     <div class="form-group">
-        @*@Html.LabelFor(m => m.Id)
-            @Html.TextBoxFor(m => m.Id, new { @class = "form-control" })*@
 
         @Html.LabelFor(m => m.CourseName)
         @Html.TextBoxFor(m => m.CourseName, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.CourseName)
-        <br />
+    </div>
+    <br />
 
+    <div class="form-group">
         @Html.LabelFor(m => m.CourseDescription)
         @Html.TextBoxFor(m => m.CourseDescription, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.CourseDescription)
-        <br />
+    </div>
+    <br />
+
+
+
+    <div class="form-group">
         @Html.LabelFor(m => m.TutorName)
         @Html.TextBoxFor(m => m.TutorName, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.TutorName)
-        <br />
+
+    </div>
+    <br />
+    <div class="form-group">
 
         @Html.LabelFor(m => m.CourseRating)
         @Html.TextBoxFor(m => m.CourseRating, new { @class = "form-control" })
@@ -37,7 +45,7 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
     @Html.ActionLink("Back To List", "List")
-    
+
 }
 
 

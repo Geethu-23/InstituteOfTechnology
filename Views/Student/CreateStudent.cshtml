@@ -14,56 +14,70 @@
 @using (Html.BeginForm("Save", "Student"))
 
 {
-<div class="form-group">
-    @*@Html.LabelFor(m => m.Id)
-        @Html.TextBoxFor(m => m.Id, new { @class = "form-control" })*@
+    
 
-    @Html.LabelFor(m => m.FirstName)
-    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
-    @Html.ValidationMessageFor(m => m.FirstName)
-    <br />
-    <br />
+    @Html.HiddenFor(m => m.Id)
+    <div class="form-group">
 
-    @Html.LabelFor(m => m.LastName)
-    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
-    @Html.ValidationMessageFor(m => m.LastName)
+        @Html.LabelFor(m => m.FirstName)
+        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.FirstName)
+    </div>
     <br />
-    @Html.LabelFor(m => m.DateOfBirth)
-    @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control" })
-    @Html.ValidationMessageFor(m => m.DateOfBirth)
     <br />
+    <div class="form-group">
+        @Html.LabelFor(m => m.LastName)
+        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.LastName)
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(m => m.CourseEnrolledDate)
 
-    @Html.LabelFor(m => m.CourseEnrolledDate)
-    @Html.TextBoxFor(m => m.CourseEnrolledDate, new { @class = "form-control" })
-    @Html.ValidationMessageFor(m => m.CourseEnrolledDate)
-    <br />
+        @Html.TextBoxFor(m => m.CourseEnrolledDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CourseEnrolledDate)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.DateOfBirth)
 
-    @Html.LabelFor(m => m.CourseId)
+        @Html.TextBoxFor(m => m.DateOfBirth, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.DateOfBirth)
+    </div>
 
-    @Html.DropDownListFor(m => m.CourseId, new SelectList(Model.studentcourse, "Id", "Name", "Select"))
-    @Html.ValidationMessageFor(m => m.CourseId)
-    <br />
-    <br />
-    @Html.LabelFor(m => m.Grade)
-    @Html.TextBoxFor(m => m.Grade, new { @class = "form-control" })
-    @Html.ValidationMessageFor(m => m.Grade)
-    <br />
-    <br />
-    @Html.LabelFor(m => m.CourseStatus)
-    @Html.DropDownListFor(m => m.CourseStatus, new List<SelectListItem>
-    {
-    new SelectListItem{Text="In-Progress", Value="1"},
-    new SelectListItem{Text="Completed", Value="2"}
-    }, "-Select")
-    @Html.ValidationMessageFor(m => m.CourseStatus)
 
-</div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(m => m.CourseId)
+
+        @Html.DropDownListFor(m => m.CourseId, new SelectList(Model.studentcourse, "Id", "Name", "Select")
+       , "-Select")
+        @Html.ValidationMessageFor(m => m.CourseId)
+
+    </div>
+    <br />
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(m => m.Grade)
+        @Html.TextBoxFor(m => m.Grade, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Grade)
+    </div>
+    <br />
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(m => m.CourseStatus)
+        @Html.DropDownListFor(m => m.CourseStatus, new List<SelectListItem>
+        {
+        new SelectListItem{Text="In-Progress", Value="1"},
+        new SelectListItem{Text="Completed", Value="2"}
+        }, "-Select")
+        @Html.ValidationMessageFor(m => m.CourseStatus)
+
+    </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 
     <br />
     <br />
     <h3>@Html.ActionLink("Back To List", "List")</h3>
 }
-
 
 
